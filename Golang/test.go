@@ -2,22 +2,16 @@ package main
 
 import (
 	"fmt"
-
-	"./stack"
+	"time"
 )
 
 func main() {
-	stk := new(stack.Stack)
-	fmt.Println(stk.IsEmpty())
-	stk.Push(123)
-	fmt.Println(stk.IsEmpty())
-	stk.Push("asas")
-	stk.Push(12.1)
-	stk.Push(false)
-	stk.Pop()
-	fmt.Println(stk.Pop())
-	fmt.Println(stk.IsEmpty())
-	fmt.Println(stk.Len())
-	fmt.Println()
+	ch := make(chan int)
+	go func() {
+		time.Sleep(2 * 1e9)
+		ch <- 2
+	}()
+	<-ch
+	fmt.Println("Done")
 
 }

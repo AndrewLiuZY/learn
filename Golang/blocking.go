@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func f1(in chan int) {
@@ -9,7 +10,8 @@ func f1(in chan int) {
 }
 
 func main() {
-	out := make(chan int)
+	out := make(chan int, 1)
 	out <- 2
 	go f1(out)
+	time.Sleep(1e9)
 }
