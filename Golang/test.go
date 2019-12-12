@@ -2,16 +2,9 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"path"
 )
 
 func main() {
-	ch := make(chan int)
-	go func() {
-		time.Sleep(2 * 1e9)
-		ch <- 2
-	}()
-	<-ch
-	fmt.Println("Done")
-
+	fmt.Println(path.Base("E:\\Github/learn/Golang/gobs/cache.gob"))
 }
