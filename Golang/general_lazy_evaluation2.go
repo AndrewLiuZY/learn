@@ -11,7 +11,7 @@ func integers() chan int {
 	num1 := 0
 	num2 := 1
 	go func() {
-		yield <- 0
+		yield <- 0 //push first element
 		for {
 			num3 := num1 + num2
 			yield <- num3
