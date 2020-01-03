@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"regexp"
 	"text/template"
 )
@@ -75,7 +75,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
-	err := templates[tmpl].	(w, p)
+	err := templates[tmpl].Execute(w, p)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
