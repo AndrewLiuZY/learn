@@ -26,7 +26,7 @@ func setCloseTimer(ch chan int, i time.Duration) {
 func tel(ch chan int) {
 	defer func() {
 		if _, ok := recover().(error); ok {
-			fmt.Println("channel is closed")
+			fmt.Println("channel is closed  ")
 		}
 	}()
 	i := 1
