@@ -12,5 +12,5 @@ func main() {
 }
 
 func (n *Number) Change(num int) {
-	*n = Number(num)
+	*n = Number (num)
 }
