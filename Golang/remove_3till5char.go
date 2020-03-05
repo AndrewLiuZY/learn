@@ -19,7 +19,7 @@ func main() {
 		inputString, _, readerError := inputReader.ReadLine()
 		if readerError == io.EOF {
 			fmt.Println("EOF")
-			break	
+			break
 		}
 		outputString := string(inputString[2:5]) + "\r\n"
 		_, err := outputWriter.WriteString(outputString)
