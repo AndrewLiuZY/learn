@@ -6,4 +6,8 @@ doubleSmallNumber x = if x > 100 then x else x*2
 
 conanO'Brien = "It's a-me, Conan O'Brien!" 
 
-hello name = "hello " ++ name
+
+hello ::Show a=>  a -> String
+-- hello "lzy" = "hello my boy!"
+-- hello "123" = "hello 123456"
+hello name = "hello "++(show name)
