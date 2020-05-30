@@ -43,7 +43,7 @@ bmiTell weight height
     | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"  
     | bmi <= fat = "You're fat! Lose some weight, fatty!"  
     | otherwise = "You're a whale, congratulations!"
-    where bmi = weight / height ^ 2
+    where bmi = weight / (height ^ 2)
           skinny = 18.5  
           normal = 25.0  
           fat = 30.0
@@ -77,3 +77,33 @@ replicate' num ele
     | num < 0 = error "num must more than 0" 
     | num == 0 = []
     | otherwise = ele:replicate' (num-1) ele
+
+take' :: (Num a , Ord a )=> a->[b]->[b]
+take' num _
+    | num<=0 = []
+take' _ [] = []
+take' num (x:xs) = x:take' (num-1) xs
+
+reverse' ::[a]->[a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
+
+repeat' :: a->[a]
+repeat' a = a:repeat' a
+
+zip' ::[a]->[b]->[(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y):zip' xs ys
+
+elem' :: (Eq a)=>a->[a]->Bool
+elem' _ [] = False
+elem' a (x:xs)
+    | a==x = True
+    | otherwise = elem' a xs
+
+quickSort :: (Ord a)=>[a]->[a]
+quickSort [] = []
+quickSort (x:xs) = smallerSorted ++ [x] ++ biggerSorted
+    where smallerSorted = quickSort [a|a<-xs,a<=x]
+          biggerSorted = quickSort [a|a<-xs,a>x]
