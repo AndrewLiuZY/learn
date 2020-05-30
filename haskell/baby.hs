@@ -34,8 +34,8 @@ capital :: String->String
 capital [] = "is null string"
 capital str@(a:_) = "The first char of "++str++" is "++ [a]
 
-bmi ::(RealFloat a) => a => a => a
-bmi weight height = weight / height ^ 2
+-- bmi ::(RealFloat a) => a => a => a
+-- bmi weight height = weight / height ^ 2
 
 bmiTell :: (RealFloat a) => a -> a -> String  
 bmiTell weight height  
@@ -58,3 +58,22 @@ sumDoubleTuple (a,b) (c,d)=
     let fstSum = a+b
         sndSum = c+d
     in fstSum+sndSum
+
+maximum' :: (Ord a) => [a] -> a  
+maximum' [] = error "maximum of empty list"  
+maximum' [x] = x 
+maximum' (x:xs)   
+    | x > maxTail = x  
+    | otherwise = maxTail  
+    where maxTail = maximum' xs
+
+maximum'1 :: (Ord a) => [a] -> a  
+maximum'1 arr = case arr of [] ->  error "maximum of empty list"  
+                            [x] -> x
+                            (x:xs) -> max x (maximum'1 xs)
+
+replicate' :: (Num a , Ord a )=> a->b->[b]
+replicate' num ele
+    | num < 0 = error "num must more than 0" 
+    | num == 0 = []
+    | otherwise = ele:replicate' (num-1) ele
