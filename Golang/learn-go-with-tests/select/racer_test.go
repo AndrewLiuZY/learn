@@ -22,8 +22,7 @@ func TestRacer(t *testing.T) {
 		serverA := makeDelayedServer(11 * time.Second)
 		serverB := makeDelayedServer(12 * time.Second)
 
-		defer serverA.Close()
-		defer serverB.Close()
+		defer func() { serverA.Close(); serverB.Close() }()
 
 		_, err := ParallelRacer(serverA.URL, serverB.URL)
 
