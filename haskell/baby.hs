@@ -1,3 +1,5 @@
+import Data.List
+
 doubleMe x = x + x
 
 doubleUs x y = x*2 + y*2
@@ -148,3 +150,7 @@ map'foldr f xs = foldr (\x acc->(f x):acc) [] xs
 map'foldl ::(a->b)->[a]->[b]
 map'foldl f xs = foldl (\acc x->(f x):acc) [] xs
 
+search :: (Eq a) => [a] -> [a] -> Bool
+search needle haystack =
+    let nlen = length needle
+    in foldl (\acc x -> if take nlen x == needle then True else acc) False (tails haystack)
